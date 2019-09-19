@@ -7,7 +7,8 @@
    typedef SqList List; // 定义抽象数据类型List为SqList类型
    #define printer print1 // ListTraverse()用到不同类型的输出函数
  #else
-   #include"Utils_LNode_Header.h" // 采用线性表的单链表存储结构
+   #include"Utils_LNode_Header.h" // 采用线性表的单链表存储结构，如果需要使用不带头节点的头文件，则需要uncomment下一行
+   //#include"Utils_LNode_Non_Header.h"
    typedef LinkList List; // 定义抽象数据类型List为LinkList类型
    #define printer print // ListTraverse()用到不同类型的输出函数
  #endif
