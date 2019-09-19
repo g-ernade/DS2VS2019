@@ -1,13 +1,13 @@
  // algo2-2.cpp 用SqList类型和LinkList类型分别实现算法2.1和2.2的程序
  #include"Basic.h"
  typedef int ElemType; // 定义ElemType为整型
- #define Sq // (用SqList类型选此行，用LinkList类型将此行作为注释)
+ //#define Sq // (用SqList类型选此行，用LinkList类型将此行作为注释)
  #ifdef Sq
    #include"Utils_SqList.h" // 采用线性表的动态分配顺序存储结构
    typedef SqList List; // 定义抽象数据类型List为SqList类型
    #define printer print1 // ListTraverse()用到不同类型的输出函数
  #else
-   #include"Utils_LNode.h" // 采用线性表的单链表存储结构
+   #include"Utils_LNode_Header.h" // 采用线性表的单链表存储结构
    typedef LinkList List; // 定义抽象数据类型List为LinkList类型
    #define printer print // ListTraverse()用到不同类型的输出函数
  #endif

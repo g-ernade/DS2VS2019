@@ -1,5 +1,6 @@
 #pragma once
 #include "Basic.h"
+//包含了c2-2.h,bo2-2.cpp,Algo2-3.cpp
 typedef int ElemType;
 // 原c2-2.h 线性表的单链表存储结构。在教科书第28页
 struct LNode
@@ -170,3 +171,40 @@ void ListTraverse(LinkList L, void(*visit)(ElemType))
 	}
 	printf("\n");
 }
+
+//原Algo2-3.cpp中的函数
+//实现了带头节点的单链表的头插法，尾插法，归并
+void CreateList(LinkList& L, int n) // 算法2.11
+{ // 逆位序(结点插在表头)输入n个元素的值，建立带表头结点的单链线性表L
+	int i;
+	LinkList p;
+	L = (LinkList)malloc(sizeof(LNode)); // 生成头结点
+	L->next = NULL; // 先建立一个带头结点的空单链表
+	printf("请输入%d个数据\n", n);
+	for (i = n; i > 0; --i)
+	{
+		p = (LinkList)malloc(sizeof(LNode)); // 生成新结点
+		scanf("%d", &p->data); // 给新结点输入元素值
+		p->next = L->next; // 将新结点插在表头
+		L->next = p; // 头结点指向新结点
+	}
+}
+
+void CreateList1(LinkList& L, int n)
+{ // 正位序(结点插在表尾)输入n个元素的值，建立带表头结点的单链线性表L
+	int i;
+	LinkList p, q;
+	L = (LinkList)malloc(sizeof(LNode)); // 生成头结点
+	L->next = NULL; // 先建立一个带头结点的空单链表
+	q = L; // q指向空表的头结点(相当于尾结点)
+	printf("请输入%d个数据\n", n);
+	for (i = 1; i <= n; i++)
+	{
+		p = (LinkList)malloc(sizeof(LNode)); // 生成新结点
+		scanf("%d", &p->data); // 给新结点输入元素值
+		q->next = p; // 将新结点插在表尾
+		q = q->next; // q指向尾结点
+	}
+	p->next = NULL; // 最后一个结点的指针域为空
+}
+
