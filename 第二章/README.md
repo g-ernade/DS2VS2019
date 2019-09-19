@@ -25,10 +25,21 @@
 书中定义了一种List,它可以是顺序表，也可以是单链表或各种链表
 这个cpp在可变的List上定义了几种操作
 
-## Utils_LNode.h
+## Utils_LNode_Header.h
+
+定义了带有头节点的单链表及其操作
+
+包含了c2-2.h,bo2-2.cpp,Algo2-3.cpp
 
 包含了原c2-2.h（定义了单链表的结构体）
+
 包含了原bo2-2.h(定义了单链表上的操作)
+
+## Utils_LNode_Non_Header.h
+
+定义了不带头节点的单链表及其操作
+
+//包含了原c2-2.h,bo2-3.cpp,bo2-4.cpp,func2-4.cpp
 
 ## New_Algo 2-2.cpp
 
