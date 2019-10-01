@@ -8,7 +8,7 @@ typedef int SElemType;
 
 struct SqStack // 顺序栈
 {
-	SElemType* base; // 在栈构造之前和销毁之后，base的值为NULL
+	SElemType* base; // 栈底指针
 	SElemType* top; // 栈顶指针
 	int stacksize; // 当前已分配的存储空间，以元素为单位
 };
@@ -24,7 +24,7 @@ void InitStack(SqStack& S)
 
 void DestroyStack(SqStack& S)
 { // 销毁栈S，S不再存在
-	free(S.base); // 释放栈空间
+	free(S.base); // 释放作为表头指针的栈底指针
 	S.top = S.base = NULL; // 栈顶、栈底指针均为空
 	S.stacksize = 0; // 当前已分配的存储空间为0
 }
@@ -54,7 +54,7 @@ Status GetTop(SqStack S, SElemType& e) // 在教科书第47页
 		e = *(S.top - 1); // 将栈顶元素赋给e
 		return OK;
 	}
-	else
+	else//栈空
 		return ERROR;
 }
 
@@ -68,17 +68,17 @@ void Push(SqStack& S, SElemType e)
 			sizeof(SElemType)); // 追加存储空间
 		if (!S.base) // 追加存储空间失败，则退出
 			exit(OVERFLOW);
-		S.top = S.base + S.stacksize; // 修改栈顶指针，指向新的栈顶
+		S.top = S.base + S.stacksize; // 新的栈顶指针=栈底指针+栈的大小
 		S.stacksize += STACK_INCREMENT; // 更新当前已分配的存储空间
 	}
-	*(S.top)++ = e; // 将e入栈，成为新的栈顶元素，栈顶指针上移1个存储单元
+	*(S.top)++ = e; // 栈顶指针所指地址放入e,然后栈顶指针往上移一位
 }
 
 Status Pop(SqStack& S, SElemType& e) // 在教科书第47页
 { // 若栈S不空，则删除S的栈顶元素，用e返回其值，并返回OK；否则返回ERROR
 	if (S.top == S.base) // 栈空
 		return ERROR;
-	e = *--S.top; // 将栈顶元素赋给e，栈顶指针下移1个存储单元
+	e = *--S.top; // 栈顶指针先下移，然后取出栈顶元素给e
 	return OK;
 }
 
