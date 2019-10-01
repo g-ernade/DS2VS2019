@@ -1,5 +1,6 @@
  // 原 func2-2.cpp 几个常用的函数
 #include "Basic.H"
+typedef int ElemType;
  Status equal(ElemType c1,ElemType c2)
  { // 判断是否相等的函数
    if(c1==c2)
