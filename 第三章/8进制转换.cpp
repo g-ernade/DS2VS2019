@@ -11,7 +11,7 @@ void conversion() // 算法3.1
 	while (n) // 当n不等于0
 	{
 		Push(s, n % N); // 入栈n除以N的余数(N进制的低位)
-		n = n / N;
+		n = n / N;//n=n div N (n除完8之后取整，赋给n)
 	}
 	while (!StackEmpty(s)) // 当栈不空
 	{
